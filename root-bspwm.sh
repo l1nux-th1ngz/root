@@ -70,6 +70,9 @@ apt install -y gstreamer1.0-gtk3 gstreamer1.0-libav gstreamer1.0-packagekit gstr
 apt install -y gstreamer1.0-plugins-rtp gstreamer1.0-plugins-ugly gstreamer1.0-pulseaudio gstreamer1.0-tools gstreamer1.0-vaapi gstreamer1.0-x curl wget mpd mpv sysvinit-utils tar util-linux
 apt install -y passwd base-passwd accountsservice adduser coreutils base-files bsdutils dash debianutils diffutils findutils grep gzip hostname init-system-helpers libc-bin login ncurses-base ncurses-bin perl-base sed
 
+# Update
+apt update
+
 # Build directories and enable services
 xdg-user-dirs-update
 sleep 2
@@ -79,7 +82,14 @@ systemctl enable bluetooth
 sleep 2
 systemctl enable avahi-daemon
 sleep 2
-systemctl enable acpid
+sudo systemctl start acpid
+sleep 2
+sudo systemctl enable acpid
+
+apt install -y sudo
+
+# Update
+apt update
 
 # Create configuration directories for various applications
 echo "Creating configuration directories for $TARGET_USER..."
