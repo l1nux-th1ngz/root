@@ -34,7 +34,7 @@ read -p "Enter your username: " USERNAME
 RULES_FILE="/etc/polkit-1/rules.d/49-custom-synaptic-gdebi.rules"
 
 # Create the rule file
-sudo bash -c "cat > \"$RULES_FILE\" <<EOF
+bash -c "cat > \"$RULES_FILE\" <<EOF
 polkit.permission.addRule(function(action, subject) {
     if ((action.id == \"org.debian.packages.install\" || 
          action.id == \"org.debian.packages.remove\" ||
@@ -59,7 +59,7 @@ echo "Polkit components installed successfully and the rules are set."
 
 # Install necessary packages
 echo "Installing packages..."
-apt install -y pkexec bspwm sxhkd xorg xinit feh rofi urxvt polybar suckless-tools geany geany-plugins terminator synaptic gdebi bluez blueman nemo xdg-user-dirs xdg-user-dirs-gtk
+apt install -y pkexec bspwm sxhkd xorg xinit feh rofi rxvt-unicode polybar suckless-tools geany geany-plugins terminator synaptic gdebi bluez blueman nemo xdg-user-dirs xdg-user-dirs-gtk
 apt install -y xserver-xorg policykit-1-gnome network-manager network-manager-gnome dialog mtools dosftools lxappearance acpi avahi-daemon acpid gvfs-backends pamixer gnome-power-manager
 apt install -y pulseaudio pavucontrol pulsemixer bluefish bluefish-data bluefish-plugins blueman breeze-gtk-theme gtk-3-examples gtk-4-examples gspell-1-tests gtk-sharp2 gtk-sharp2-examples gtk2-engines
 apt install -y xbacklight fonts-recommended xclip fonts-font-awesome i3lock-fancy fonts-terminus slop playerctl brightnessctl kitty alacritty w3m lolcat figlet toilet gtk2-engines-aurora gtk2-engines-cleanice
